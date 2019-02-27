@@ -1240,9 +1240,8 @@ function tripal_core_chado_select($table, $columns, $values, $options = NULL) {
 
   // get the table description
   $table_desc = tripal_core_get_chado_table_schema($table);
-  $select = '';
   $from = '';
-  $where = '';
+  $where = array();
   $args = array();
 
   // if the 'use_unique' option is turned on then we want
@@ -1340,7 +1339,6 @@ function tripal_core_chado_select($table, $columns, $values, $options = NULL) {
       return array();
     }
 
-    $select[] = $field;
     if (is_array($value)) {
       // if the user has specified multiple values for matching then this we
       // want to catch that and save them in our $where array, otherwise
